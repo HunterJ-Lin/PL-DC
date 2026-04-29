@@ -142,5 +142,5 @@ dmypy.json
 # vscode
 .vscode/
 
-pl_dc/configs/ablations/
+pl_dc/configs/abalations/
 
