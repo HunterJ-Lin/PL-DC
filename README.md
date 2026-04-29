@@ -8,8 +8,6 @@ The overall of our **PL-DC Framework**.
   <img src="images/framework.jpg" alt="PL-DC Framework">
 </p>
 
-## Introduction
-
 Semi-supervised instance segmentation (SSIS) aims to learn from limited labeled data and large amounts of unlabeled data. Existing methods rely on a single coupled instance score to filter pseudo-labels, which fails to independently evaluate class quality and mask quality, leading to noisy supervision.
 
 We propose **PL-DC** (Pseudo-Label Decoupling and Correction), a new SSIS framework with three novel components:
@@ -19,6 +17,9 @@ We propose **PL-DC** (Pseudo-Label Decoupling and Correction), a new SSIS framew
 - **PMUA** — Pixel-Level Mask Uncertainty-Aware: re-weights the mask loss by pixel-level uncertainty, suppressing noisy regions while emphasizing confident pixels.
 
 ## Results
+<p align="center">
+  <img src="images/histogram.jpg" alt="results">
+</p>
 
 ### COCO
 
@@ -27,15 +28,21 @@ We propose **PL-DC** (Pseudo-Label Decoupling and Correction), a new SSIS framew
 | Mask2Former (Supervised) | 13.5 | 20.0 | 26.0 | 30.5 | 43.5 |
 | GuidedDistillation | 21.5 | 25.3 | 29.9 | 35.0 | — |
 | **PL-DC (Ours)** | **25.2** | **29.2** | **34.0** | **36.8** | **48.8** |
-| *vs. GuidedDistillation* | *+11.7* | *+9.2* | *+8.0* | *+6.3* | *+5.3* |
+| *vs. baseline* | *+11.7* | *+9.2* | *+8.0* | *+6.3* | *+5.3* |
 
 ### Cityscapes
 
 | Method | 5% | 10% | 20% | 30% |
 |---|---|---|---|---|
-| Mask2Former (Supervised) | — | — | — | — |
-| GuidedDistillation | — | — | — | — |
-| **PL-DC (Ours)** | **+16.4** | **+13.8** | **+8.7** | **+8.3** |
+| Mask2Former (Supervised) | 12.1 | 18.8 | 27.4 | 29.6 |
+| GuidedDistillation | 23.0 | 30.8 | 33.1 | 35.6 |
+| **PL-DC (Ours)** | **28.5** | **32.6** | **36.1** | **37.9** |
+| *vs. baseline* | +16.4 | +13.8 | +8.7 | +8.3 |
+
+### Visualization
+<p align="center">
+  <img src="images/visualization.jpg" alt="vis results">
+</p>
 
 ## Installation
 
@@ -109,14 +116,17 @@ python tools/train_net_ssl.py \
 If you find this work useful, please cite:
 
 ```bibtex
-@inproceedings{pldc2026,
-  title     = {Pseudo-Label Quality Decoupling and Correction for Semi-Supervised Instance Segmentation},
-  author    = {Lin, Hunterjoan and Lu, Jiaxin and Shen, Yunhang and Zhu, Shaohui and Zhang, Ke and Cao, Liujuan and Ji, Rongrong},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  year      = {2026}
+@inproceedings{lin2026robust,
+  title={Robust Pseudo-Labeling via Decoupled Class-Aware Filtering and Dynamic Category Correction},
+  author={Lin, Jianghang and Lu, Yilin and Zhu, Chaoyang and Shen, Yunhang and Zhang, Shengchuan and Cao, Liujuan},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={9},
+  pages={6961--6969},
+  year={2026}
 }
 ```
 
 ## Acknowledgement
 
-This project builds on [Mask2Former](https://github.com/facebookresearch/Mask2Former), [detrex](https://github.com/IDEACVR/detrex), [Detectron2](https://github.com/facebookresearch/detectron2), and [GuidedDistillation](https://github.com/lhoyer/GuidedDistillation). We thank the authors for their excellent work.
+This project builds on [Mask2Former](https://github.com/facebookresearch/Mask2Former), [detrex](https://github.com/IDEA-Research/detrex), [Detectron2](https://github.com/facebookresearch/detectron2), and [GuidedDistillation](https://github.com/facebookresearch/GuidedDistillation). We thank the authors for their excellent work.
